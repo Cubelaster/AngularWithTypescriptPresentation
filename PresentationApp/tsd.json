@@ -13,6 +13,12 @@
     },
     "angularjs/angular-route.d.ts": {
       "commit": "8df97176d2f27399ffc562098409223fef6c2304"
+    },
+    "angularjs/angular-resource.d.ts": {
+      "commit": "8df97176d2f27399ffc562098409223fef6c2304"
+    },
+    "angularjs/angular-sanitize.d.ts": {
+      "commit": "8df97176d2f27399ffc562098409223fef6c2304"
     }
   }
 }
