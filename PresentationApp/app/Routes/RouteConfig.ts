@@ -5,8 +5,12 @@ namespace app.Routes {
             var appPath: string = '/app/MovieStore/';
             $routeProvider
                 .when("/store/movieList",{
-                    templateUrl: appPath+"Views/MovieList.html",
+                    templateUrl: appPath + "Views/MovieList.html",
                     controller: "MovieListCtrl as mlCtrl"
+                })
+                .when("/store/movieList/:movieId", {
+                    templateUrl: appPath + "Views/MovieDetails.html",
+                    controller: "MovieDetailsCtrl as mdCtrl"
                 })
                 .otherwise("/store");
         }
