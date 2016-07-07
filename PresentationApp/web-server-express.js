@@ -6,5 +6,5 @@ var port = 8000;
 
 app.use(express.static(rootPath));
 app.listen(port);
-console.log('This is the root path: ' + rootPath);
+console.log('\r\nThis is the root path: \r\n' + rootPath + '\r\n');
 console.log('Express server running on port ' + port);

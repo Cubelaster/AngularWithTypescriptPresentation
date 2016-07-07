@@ -7,24 +7,35 @@
     <!-- Style sheets -->
     <link href="styles/bootstrap.min.css" rel="stylesheet" />
     <!-- External Scripts -->
-    <script src="scripts/ExternalScripts/JQuery/jquery-3.0.0.js" ></script>
-    <script src="scripts/ExternalScripts/Angular/angular.js" ></script>
-    <script src="scripts/ExternalScripts/Angular/angular-route.js" ></script>
-    <script src="scripts/ExternalScripts/Angular/angular-resource.js" ></script>
-    <script src="scripts/ExternalScripts/Angular/angular-sanitize.js" ></script>
+    <script src="scripts/ExternalScripts/JQuery/jquery-3.0.0.js"></script>
+    <script src="scripts/ExternalScripts/Angular/angular.js"></script>
+    <script src="scripts/ExternalScripts/Angular/angular-route.js"></script>
+    <script src="scripts/ExternalScripts/Angular/angular-resource.js"></script>
+    <script src="scripts/ExternalScripts/Angular/angular-sanitize.js"></script>
+    <!-- Application script -->
+    <script src="app/Routes/RouteConfig.js"></script>
+    <script src="app/app.js"></script>
+    <!-- Controllers -->
+    <script src="app/MovieStore/Controllers/MovieListCtrl.js"></script>
+    <!-- Services -->
+
 </head>
 
-<body>
+<body ng-app="movieStore">
     <div class="container">
+
         <nav class="navbar">
             <div class="navbar-inner">
                 <ul class="nav">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a ng-href="#/index">Home</a></li>
+                    <li><a ng-href="#/movieList">List of movies</a></li>
                 </ul>
             </div>
         </nav>
-    </div>
 
+        <ng-view></ng-view>
+
+    </div>
 </body>
 
 </html>
