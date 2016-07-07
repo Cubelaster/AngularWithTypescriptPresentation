@@ -9,7 +9,7 @@ module app.common.MockedDB {
         var movieList: app.MovieStore.Contracts.ModelContracts.IMovieContract[] = [];
         var movie: app.MovieStore.Contracts.ModelContracts.IMovieContract;
         let movieListUrl = "/movieList";
-        let idMatcherRegex = new RegExp(movieListUrl + "/[0-9][0-9]*", '');
+        let idMatcherRegex = new RegExp(movieListUrl + "/[0-9]*", '');
 
         movie = new app.MovieStore.Models.Movie(1, 'Deadpool', 3.75, 'Merc with a mouth',
             'R', 3, 'Action, Comedy', undefined , 'http://www.flickeringmyth.com/wp-content/uploads/2016/01/Deadpool-poster-2-600x875.jpg');
@@ -33,22 +33,22 @@ module app.common.MockedDB {
 
         $httpBackend.whenGET(movieListUrl).respond(movieList);
 
-        $httpBackend.whenGET(idMatcherRegex).respond(function (method, url, data) {
-            var movie = { "id": 0 };
-            var parameters = url.split('/');
-            var length = parameters.length;
-            var id = +parameters[length - 1];
+        // $httpBackend.whenGET(idMatcherRegex).respond(function (method, url, data) {
+        //     var movie = { "id": 0 };
+        //     var parameters = url.split('/');
+        //     var length = parameters.length;
+        //     var id = +parameters[length - 1];
 
-            if (id > 0) {
-                for (var i = 0; i < movieList.length; i++) {
-                    if (movieList[i].id == id) {
-                        movie = movieList[i];
-                        break;
-                    }
-                }
-            }
-            return [200, movie, {}];
-        });
+        //     if (id > 0) {
+        //         for (var i = 0; i < movieList.length; i++) {
+        //             if (movieList[i].id == id) {
+        //                 movie = movieList[i];
+        //                 break;
+        //             }
+        //         }
+        //     }
+        //     return [200, movie, {}];
+        // });
 
         // Catch all for testing purposes
         $httpBackend.whenGET(/store/).respond(function (method, url, data) {

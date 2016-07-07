@@ -10,7 +10,7 @@ var app;
                     templateUrl: appPath + "Views/MovieList.html",
                     controller: "MovieListCtrl as mlCtrl"
                 })
-                    .when("/store/movieList/:movieId", {
+                    .when("/store/movieList/:id", {
                     templateUrl: appPath + "Views/MovieDetails.html",
                     controller: "MovieDetailsCtrl as mdCtrl"
                 })

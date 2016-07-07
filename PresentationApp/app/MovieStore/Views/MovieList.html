@@ -25,12 +25,13 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
+                <td ng-click="mlCtrl.sortColumn = 'getVoteCount()'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Votes</td>
                 <td>Cover</td>
                 <td ng-click="mlCtrl.sortColumn = 'productName'; mlCtrl.sortDirection = !mlCtrl.sortDirection">
                     Product
                 </td>
                 <td ng-click="mlCtrl.sortColumn = 'movieGenre'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Genre</td>
-                <td ng-click="mlCtrl.sortColumn = 'getDueDate'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Available from</td>
+                <td ng-click="mlCtrl.sortColumn = 'getDueDate()'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Available from</td>
                 <td ng-click="mlCtrl.sortColumn = 'movieRating'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Rating</td>
                 <td ng-click="mlCtrl.sortColumn = 'maxRentalPeriod'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Rental period</td>
                 <td ng-click="mlCtrl.sortColumn = 'productPrice'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Rental price</td>
@@ -39,6 +40,19 @@
         </thead>
         <tbody>
             <tr ng-repeat="movie in mlCtrl.movieList | orderBy: mlCtrl.sortColumn : mlCtrl.sortDirection | filter:searchedTerm | filter: searchedGenre">
+                <td>
+                    <div class="span0 well votingWidget">
+                        <div class="votingButton" ng-click="movie.upVoteMovie()">
+                            <i class="icon-chevron-up icon-white"></i>
+                        </div>
+                        <div class="badge badge-inverse">
+                            <div>{{movie.getVoteCount()}}</div>
+                        </div>
+                        <div class="votingButton" ng-click="movie.downVoteMovie()">
+                            <i class="icon-chevron-down"></i>
+                        </div>
+                    </div>
+                </td>
                 <td><img class="thumb" ng-src="{{movie.imageUrl}}" height="80" width="80" />
                     <td>{{ movie.productName | uppercase}} </td>
                     <td>{{ movie.movieGenre}}</td>

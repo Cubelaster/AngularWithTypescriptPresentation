@@ -4,3 +4,17 @@ img {
     height: 80;
     width: 80;
 }
+
+input.ng-invalid.ng-dirty {
+  background-color: pink;
+}
+
+.votingWidget {
+  height: 64px;
+  padding: 7px;
+}
+
+.votingButton {
+  padding-left:6px;
+  cursor:pointer;
+}

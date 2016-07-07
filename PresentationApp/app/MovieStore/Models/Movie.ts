@@ -1,6 +1,7 @@
 namespace app.MovieStore.Models {
     export class Movie
         implements app.MovieStore.Contracts.ModelContracts.IMovieContract {
+        _voteCount: number;
         constructor(
             public id: number,
             public productName: string,
@@ -13,14 +14,32 @@ namespace app.MovieStore.Models {
             public imageUrl?: string
         ) {
             let movie = this;
+            movie._voteCount = 0;
         }
 
         getDueDate = () => {
             return this.lastRentalDate;
         }
 
+        getVoteCount = () => {
+            return this.voteCount;
+        }
+
         rentIt = () => {
             // this._lastRentalDate = new Date();
+        }
+        
+        public get voteCount(): number {
+            return this._voteCount;
+        }
+
+
+        upVoteMovie = (): void => {
+            this._voteCount++;
+        }
+
+        downVoteMovie = (): void => {
+            this._voteCount--;
         }
 
         public get lastRentalDate(): any {

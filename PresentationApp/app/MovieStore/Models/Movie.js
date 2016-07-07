@@ -19,11 +19,28 @@ var app;
                     this.getDueDate = function () {
                         return _this.lastRentalDate;
                     };
+                    this.getVoteCount = function () {
+                        return _this.voteCount;
+                    };
                     this.rentIt = function () {
                         // this._lastRentalDate = new Date();
                     };
+                    this.upVoteMovie = function () {
+                        _this._voteCount++;
+                    };
+                    this.downVoteMovie = function () {
+                        _this._voteCount--;
+                    };
                     var movie = this;
+                    movie._voteCount = 0;
                 }
+                Object.defineProperty(Movie.prototype, "voteCount", {
+                    get: function () {
+                        return this._voteCount;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Object.defineProperty(Movie.prototype, "lastRentalDate", {
                     get: function () {
                         var movie = this;

@@ -11,7 +11,7 @@ var app;
                 var movieList = [];
                 var movie;
                 var movieListUrl = "/movieList";
-                var idMatcherRegex = new RegExp(movieListUrl + "/[0-9][0-9]*", '');
+                var idMatcherRegex = new RegExp(movieListUrl + "/[0-9]*", '');
                 movie = new app.MovieStore.Models.Movie(1, 'Deadpool', 3.75, 'Merc with a mouth', 'R', 3, 'Action, Comedy', undefined, 'http://www.flickeringmyth.com/wp-content/uploads/2016/01/Deadpool-poster-2-600x875.jpg');
                 movieList.push(movie);
                 movie = new app.MovieStore.Models.Movie(2, 'Suicide Squad', 2.75, 'Suicide Squad', 'PG-13', 3, 'Action, Crime, Fantasy', undefined, 'https://i.ytimg.com/vi/E7N2zqCPMN0/hqdefault.jpg');
@@ -23,21 +23,21 @@ var app;
                 movie = new app.MovieStore.Models.Movie(1, 'Independance day', 3.75, "'Merica", 'PG-13', 3, 'Action, Adventure, Sci-Fi', undefined, 'https://yts.ag/assets/images/movies/Independence_Day_1996/large-cover.jpg');
                 movieList.push(movie);
                 $httpBackend.whenGET(movieListUrl).respond(movieList);
-                $httpBackend.whenGET(idMatcherRegex).respond(function (method, url, data) {
-                    var movie = { "id": 0 };
-                    var parameters = url.split('/');
-                    var length = parameters.length;
-                    var id = +parameters[length - 1];
-                    if (id > 0) {
-                        for (var i = 0; i < movieList.length; i++) {
-                            if (movieList[i].id == id) {
-                                movie = movieList[i];
-                                break;
-                            }
-                        }
-                    }
-                    return [200, movie, {}];
-                });
+                // $httpBackend.whenGET(idMatcherRegex).respond(function (method, url, data) {
+                //     var movie = { "id": 0 };
+                //     var parameters = url.split('/');
+                //     var length = parameters.length;
+                //     var id = +parameters[length - 1];
+                //     if (id > 0) {
+                //         for (var i = 0; i < movieList.length; i++) {
+                //             if (movieList[i].id == id) {
+                //                 movie = movieList[i];
+                //                 break;
+                //             }
+                //         }
+                //     }
+                //     return [200, movie, {}];
+                // });
                 // Catch all for testing purposes
                 $httpBackend.whenGET(/store/).respond(function (method, url, data) {
                     return [200, movieList, {}];
