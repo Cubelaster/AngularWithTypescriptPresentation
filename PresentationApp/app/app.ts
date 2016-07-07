@@ -1,7 +1,9 @@
 namespace app {
 
     var application = angular.module("movieStore", [
-        "ngRoute"
+        "ngRoute",
+        "app.common.mockedServices",
+        "app.common.MockedDB"
     ])
-    .config(app.Routes.RouteConfig);
+        .config(app.Routes.RouteConfig);
 }

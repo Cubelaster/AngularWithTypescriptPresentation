@@ -30,6 +30,7 @@ var app;
                             return dueDate;
                         }
                     };
+                    var Movie = this;
                 }
                 return Movie;
             }());

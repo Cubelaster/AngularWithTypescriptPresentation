@@ -1,5 +1,5 @@
 namespace app.MovieStore.Contracts.ModelContracts {
-    export interface iMovieContract 
+    export interface IMovieContract 
         extends app.common.Contracts.ModelContracts.IProductContract {
             movieRating: string;
             maxRentalPeriod: number;

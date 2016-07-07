@@ -1,6 +1,7 @@
 namespace app.MovieStore.Models {
     export class Movie
-        implements app.MovieStore.Contracts.ModelContracts.iMovieContract {
+        implements app.MovieStore.Contracts.ModelContracts.IMovieContract {
+
         constructor(
             public id: number,
             public productName: string,
@@ -11,14 +12,14 @@ namespace app.MovieStore.Models {
             public movieGenre: string,
             public lastRentalDate?: Date,
             public imageUrl?: string
-        ) {
-        }
+            ) 
+            { let Movie = this; }
 
         rentIt = () => {
             this.lastRentalDate = new Date();
         }
 
-        shouldBeReturned = ():string | Date => {
+        shouldBeReturned = (): string | Date => {
             if (this.lastRentalDate === undefined) {
                 return 'Movie is available';
             } else {

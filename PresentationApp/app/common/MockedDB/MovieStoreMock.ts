@@ -1,13 +1,13 @@
-module app.common.MovieStoreMock {
-    var mockedResource = angular.module("app.common.movieStoreMock", ["ngMockE2E"]);
+module app.common.MockedDB {
+    
+    var mockedResource = angular.module("app.common.MockedDB", ["ngMockE2E"]);
 
     mockedResource.run(mockedResourceRun);
 
     mockedResourceRun.$inject = ["$httpBackend"];
-
     function mockedResourceRun($httpBackend: ng.IHttpBackendService): void {
-        var movieList: app.MovieStore.Models.Movie[] = [];
-        var movie: app.MovieStore.Models.Movie;
+        var movieList: app.MovieStore.Contracts.ModelContracts.IMovieContract[] = [];
+        var movie: app.MovieStore.Contracts.ModelContracts.IMovieContract;
         let movieListUrl = "/store/movies";
         let idMatcherRegex = new RegExp(movieListUrl + "/[0-9][0-9]*", '');
 
@@ -18,7 +18,7 @@ module app.common.MovieStoreMock {
         $httpBackend.whenGET(movieListUrl).respond(movieList);
 
         $httpBackend.whenGET(idMatcherRegex).respond(function (method, url, data) {
-            var product = { "id": 0 };
+            var movie = { "id": 0 };
             var parameters = url.split('/');
             var length = parameters.length;
             var id = +parameters[length - 1];
@@ -26,12 +26,12 @@ module app.common.MovieStoreMock {
             if (id > 0) {
                 for (var i = 0; i < movieList.length; i++) {
                     if (movieList[i].id == id) {
-                        product = movieList[i];
+                        movie = movieList[i];
                         break;
                     }
                 }
             }
-            return [200, product, {}];
+            return [200, movie, {}];
         });
 
         // Catch all for testing purposes

@@ -12,13 +12,18 @@
     <script src="scripts/ExternalScripts/Angular/angular-route.js"></script>
     <script src="scripts/ExternalScripts/Angular/angular-resource.js"></script>
     <script src="scripts/ExternalScripts/Angular/angular-sanitize.js"></script>
+    <script src="scripts/ExternalScripts/Angular/angular-mocks.js"></script>
     <!-- Application script -->
     <script src="app/Routes/RouteConfig.js"></script>
     <script src="app/app.js"></script>
+    <script src="app/common/common.js"></script>
+    <!-- Mocks -->
+    <script src="app/common/MockedDB/DataAccessService.js"></script>    
+    <script src="app/common/MockedDB/MovieStoreMock.js"></script>    
     <!-- Controllers -->
     <script src="app/MovieStore/Controllers/MovieListCtrl.js"></script>
-    <!-- Services -->
-
+    <!-- Models -->
+    <script src="app/MovieStore/Models/Movie.js"></script>
 </head>
 
 <body ng-app="movieStore">
