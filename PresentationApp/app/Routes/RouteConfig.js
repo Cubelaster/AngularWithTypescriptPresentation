@@ -6,11 +6,11 @@ var app;
             function RouteConfig($routeProvider) {
                 var appPath = '/app/MovieStore/';
                 $routeProvider
-                    .when("/movieList", {
+                    .when("/store/movieList", {
                     templateUrl: appPath + "Views/MovieList.html",
                     controller: "MovieListCtrl as mlCtrl"
                 })
-                    .otherwise("/");
+                    .otherwise("/store");
             }
             RouteConfig.$inject = ["$routeProvider"];
             return RouteConfig;

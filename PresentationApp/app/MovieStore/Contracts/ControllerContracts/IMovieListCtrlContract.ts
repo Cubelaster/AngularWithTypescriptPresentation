@@ -2,7 +2,7 @@ namespace app.MovieStore.Contracts.ControllerContracts {
     export interface IMovieListCtrlContract 
         extends app.common.Contracts.ControllerContracts.IControllerContract {
             movieList: app.MovieStore.Contracts.ModelContracts.IMovieContract[];
-            sortDirection: string;
+            sortDirection: boolean;
             sortColumn: string;
             searchedTerm: string;
 

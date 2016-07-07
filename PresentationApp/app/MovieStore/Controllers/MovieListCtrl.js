@@ -5,13 +5,21 @@ var app;
         var Controllers;
         (function (Controllers) {
             var MovieListCtrl = (function () {
-                function MovieListCtrl() {
+                function MovieListCtrl(dataAccessService) {
+                    var _this = this;
+                    this.dataAccessService = dataAccessService;
                     this.fetchMovieList = function () {
                         return;
                     };
                     var controller = this;
                     controller.title = 'List of movies';
+                    controller.sortColumn = 'productName';
+                    var moviesResource = dataAccessService.getProductResource();
+                    moviesResource.query(function (data) {
+                        _this.movieList = data;
+                    });
                 }
+                MovieListCtrl.$inject = ["dataAccessService"];
                 return MovieListCtrl;
             }());
             Controllers.MovieListCtrl = MovieListCtrl;

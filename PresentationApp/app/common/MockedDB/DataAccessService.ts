@@ -14,7 +14,7 @@ namespace app.common.MockedDB {
         constructor(private $resource: ng.resource.IResourceService){}
 
         getProductResource() : ng.resource.IResourceClass<IMovieResource> {
-            return this.$resource("/api/products/:productId");
+            return this.$resource("store/movieList");
         }
     }
     angular

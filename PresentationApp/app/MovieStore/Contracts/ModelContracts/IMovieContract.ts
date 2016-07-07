@@ -4,9 +4,8 @@ namespace app.MovieStore.Contracts.ModelContracts {
             movieRating: string;
             maxRentalPeriod: number;
             movieGenre: string;
-            lastRentalDate?: Date;
+            lastRentalDate?: string | Date;
             imageUrl?: string;
             rentIt(): void;
-            shouldBeReturned(): any;
         }
 }

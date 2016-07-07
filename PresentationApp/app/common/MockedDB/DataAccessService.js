@@ -9,7 +9,7 @@ var app;
                     this.$resource = $resource;
                 }
                 DataAccessService.prototype.getProductResource = function () {
-                    return this.$resource("/api/products/:productId");
+                    return this.$resource("store/movieList");
                 };
                 DataAccessService.$inject = ["$resource"];
                 return DataAccessService;

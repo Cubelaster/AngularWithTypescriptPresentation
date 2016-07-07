@@ -3,4 +3,52 @@
     <div class="panel-body">
         <h4 ng-bind="mlCtrl.title"></h4>
     </div>
+
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search" ng-model="searchedTerm">
+            </div>
+        </div>
+        <select ng-model="searchedGenre" class="input-medium">
+                <option selected value="">All</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Crime">Crime</option>
+            </select>
+    </form>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Cover</td>
+                <td ng-click="mlCtrl.sortColumn = 'productName'; mlCtrl.sortDirection = !mlCtrl.sortDirection">
+                    Product
+                </td>
+                <td ng-click="mlCtrl.sortColumn = 'movieGenre'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Genre</td>
+                <td ng-click="mlCtrl.sortColumn = 'getDueDate'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Available from</td>
+                <td ng-click="mlCtrl.sortColumn = 'movieRating'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Rating</td>
+                <td ng-click="mlCtrl.sortColumn = 'maxRentalPeriod'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Rental period</td>
+                <td ng-click="mlCtrl.sortColumn = 'productPrice'; mlCtrl.sortDirection = !mlCtrl.sortDirection">Rental price</td>
+                <td>Details</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="movie in mlCtrl.movieList | orderBy: mlCtrl.sortColumn : mlCtrl.sortDirection | filter:searchedTerm | filter: searchedGenre">
+                <td><img class="thumb" ng-src="{{movie.imageUrl}}" height="80" width="80" />
+                    <td>{{ movie.productName | uppercase}} </td>
+                    <td>{{ movie.movieGenre}}</td>
+                    <td>{{ movie.getDueDate()}}</td>
+                    <td>{{ movie.movieRating | uppercase}}</td>
+                    <td>{{ movie.maxRentalPeriod}} days</td>
+                    <td>{{ movie.productPrice | currency}}</td>
+                    <td><a ng-href="#/store/movieList/{{movie.id}}">See details</a></td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

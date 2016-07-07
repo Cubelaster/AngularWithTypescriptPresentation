@@ -4,11 +4,11 @@ namespace app.Routes {
         constructor($routeProvider: ng.route.IRouteProvider) {
             var appPath: string = '/app/MovieStore/';
             $routeProvider
-                .when("/movieList",{
+                .when("/store/movieList",{
                     templateUrl: appPath+"Views/MovieList.html",
                     controller: "MovieListCtrl as mlCtrl"
                 })
-                .otherwise("/");
+                .otherwise("/store");
         }
     }
 }
