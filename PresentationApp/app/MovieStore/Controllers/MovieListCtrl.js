@@ -16,7 +16,9 @@ var app;
                     controller.sortColumn = 'productName';
                     var moviesResource = dataAccessService.getProductResource();
                     moviesResource.query(function (data) {
-                        _this.movieList = data;
+                        if (_this.movieList === undefined) {
+                            _this.movieList = dataAccessService.movieList;
+                        }
                     });
                 }
                 MovieListCtrl.$inject = ["dataAccessService"];

@@ -1,20 +1,39 @@
 namespace app.common.MockedDB {
 
     interface IDataAccessService {
-        getProductResource() : ng.resource.IResourceClass<IMovieResource>;
+        getProductResource(): ng.resource.IResourceClass<IMovieResource>;
     }
 
-    interface IMovieResource 
+    interface IMovieResource
         extends ng.resource.IResource<app.MovieStore.Contracts.ModelContracts.IMovieContract> {
 
     }
 
     export class DataAccessService implements IDataAccessService {
-        static $inject = ["$resource"];
-        constructor(private $resource: ng.resource.IResourceService){}
 
-        getProductResource() : ng.resource.IResourceClass<IMovieResource> {
-            return this.$resource("store/movieList");
+        movieList;
+        static $inject = ["$resource"];
+        constructor(private $resource: ng.resource.IResourceService) {
+
+            this.getProductResource().query(
+                (data: app.MovieStore.Contracts.ModelContracts.IMovieContract[]) => {
+                    if (this.movieList === undefined) {
+                        this.movieList = data;
+                        this.setMovieList(this.movieList);
+                    }
+
+                })
+        }
+
+        setMovieList = (movieList) => {
+        }
+
+        getMovieList = () => {
+            return this.movieList;
+        }
+
+        getProductResource(): ng.resource.IResourceClass<IMovieResource> {
+            return this.$resource("store/movieList/:id");
         }
     }
     angular

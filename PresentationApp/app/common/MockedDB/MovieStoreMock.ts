@@ -27,28 +27,28 @@ module app.common.MockedDB {
             'PG-13', 3, 'Action, Adventure', undefined , 'http://www.screenfantastique.com/uploads/1/9/6/2/19626163/3468549_orig.jpg?425');
         movieList.push(movie);
 
-        movie = new app.MovieStore.Models.Movie(1, 'Independance day', 3.75, "'Merica",
+        movie = new app.MovieStore.Models.Movie(5, 'Independance day', 3.75, "'Merica",
             'PG-13', 3, 'Action, Adventure, Sci-Fi', undefined , 'https://yts.ag/assets/images/movies/Independence_Day_1996/large-cover.jpg');
         movieList.push(movie);
 
         $httpBackend.whenGET(movieListUrl).respond(movieList);
 
-        // $httpBackend.whenGET(idMatcherRegex).respond(function (method, url, data) {
-        //     var movie = { "id": 0 };
-        //     var parameters = url.split('/');
-        //     var length = parameters.length;
-        //     var id = +parameters[length - 1];
+        $httpBackend.whenGET(idMatcherRegex).respond(function (method, url, data) {
+            var movie = { "id": 0 };
+            var parameters = url.split('/');
+            var length = parameters.length;
+            var id = +parameters[length - 1];
 
-        //     if (id > 0) {
-        //         for (var i = 0; i < movieList.length; i++) {
-        //             if (movieList[i].id == id) {
-        //                 movie = movieList[i];
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     return [200, movie, {}];
-        // });
+            if (id > 0) {
+                for (var i = 0; i < movieList.length; i++) {
+                    if (movieList[i].id == id) {
+                        movie = movieList[i];
+                        break;
+                    }
+                }
+            }
+            return [200, movie, {}];
+        });
 
         // Catch all for testing purposes
         $httpBackend.whenGET(/store/).respond(function (method, url, data) {

@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
 
     <div class="panel-body">
-        <h4 ng-bind="mdCtrl.title"></h4>
+        <h4 ng-bind="createCtrl.title"></h4>
     </div>
 
     <form name="MovieForm">
@@ -10,37 +10,37 @@
             <div class="span3">
                 <fieldset>
                     <label for="productName">Movie name:</label>
-                    <input focus id="productName" required type="text" placeholder="Name" ng-model="mdCtrl.movie.productName" />
+                    <input focus id="productName" required type="text" placeholder="Name" ng-model="createCtrl.movie.productName" />
                     <label for="productPrice">Price:</label>
-                    <input id="productPrice" type="text" required ng-pattern="/^[1-9]\.[0-9][1-9]$/" placeholder="Price" ng-model="mdCtrl.movie.productPrice"
+                    <input id="productPrice" type="text" required ng-pattern="/^[1-9]\.[0-9][1-9]$/" placeholder="Price" ng-model="createCtrl.movie.productPrice"
                     />
                     <label for="movieRating">Movie rating:</label>
-                    <input focus id="movieRating" type="text" required type="text" placeholder="Rating" ng-model="mdCtrl.movie.movieRating" />
+                    <input focus id="movieRating" type="text" required type="text" placeholder="Rating" ng-model="createCtrl.movie.movieRating" />
                     <label for="maxRentalPeriod">Maximum rental period:</label>
-                    <input id="maxRentalPeriod" type="text" required ng-pattern="/^[1-9]$/" placeholder="Days" ng-model="mdCtrl.movie.maxRentalPeriod"
+                    <input id="maxRentalPeriod" type="text" required ng-pattern="/^[1-9]$/" placeholder="Days" ng-model="createCtrl.movie.maxRentalPeriod"
                     />
                     <label for="movieGenre">Movie genre:</label>
-                    <input focus id="movieGenre" type="text" required type="text" placeholder="Genre" ng-model="mdCtrl.movie.movieGenre" />
+                    <input focus id="movieGenre" type="text" required type="text" placeholder="Genre" ng-model="createCtrl.movie.movieGenre" />
                     <label for="imageUrl">Image:</label>
-                    <input id="imageUrl" type="text" placeholder="Url" ng-model="mdCtrl.movie.imageUrl" />
+                    <input id="imageUrl" type="text" placeholder="Url" ng-model="createCtrl.movie.imageUrl" />
                 </fieldset>
             </div>
             <div class="span3">
-                <img ng-src="{{mdCtrl.movie.imageUrl}}" />
+                <img ng-src="{{createCtrl.movie.imageUrl}}" />
             </div>
         </div>
 
         <div class="row-fluid">
             <div class="span6">
                 <label for="bio">Description:</label>
-                <textarea id="bio" rows="3" style="width:80%; color:#52575c" placeholder="Description" ng-model="mdCtrl.movie.productDescription"></textarea>
+                <textarea id="bio" rows="3" style="width:80%; color:#52575c" placeholder="Description" ng-model="createCtrl.movie.productDescription"></textarea>
             </div>
         </div>
         <div class="row-fluid">
             <div class="span6">
                 <div class="pull-left"><span class="btn">Cancel</span></div>
                 <div class="pull-right">
-                    <button ng-disabled="MovieForm.$invalid" type="submit" class="btn btn-primary" ng-click="mdCtrl.saveMovie(mdCtrl.movie, MovieForm)">Save</button>
+                    <button type="submit" class="btn btn-primary" ng-click="createCtrl.createMovie(createCtrl.movie, MovieForm)">Create</button>
                 </div>
             </div>
         </div>

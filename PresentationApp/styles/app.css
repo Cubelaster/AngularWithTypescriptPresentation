@@ -1,8 +1,8 @@
 /* app css stylesheet */
 
-img {
-    height: 80;
-    width: 80;
+
+input.ng-invalid {
+    background-color: pink;
 }
 
 input.ng-invalid.ng-dirty {

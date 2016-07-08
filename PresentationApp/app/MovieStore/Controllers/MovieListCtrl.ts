@@ -14,13 +14,15 @@ namespace app.MovieStore.Controllers {
         ) {
             let controller = this;
             controller.title = 'List of movies';
-
             controller.sortColumn = 'productName';
 
             var moviesResource = dataAccessService.getProductResource();
-            moviesResource.query((data: app.MovieStore.Contracts.ModelContracts.IMovieContract[]) => {
-                this.movieList = data;
-            })
+            moviesResource.query(
+                (data: app.MovieStore.Contracts.ModelContracts.IMovieContract[]) => {
+                    if (this.movieList === undefined) {
+                        this.movieList = dataAccessService.movieList;
+                    }
+                })
         }
 
         fetchMovieList = (): app.MovieStore.Models.Movie[] => {

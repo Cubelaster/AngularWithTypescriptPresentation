@@ -14,6 +14,10 @@ var app;
                     templateUrl: appPath + "Views/MovieDetails.html",
                     controller: "MovieDetailsCtrl as mdCtrl"
                 })
+                    .when("/store/create", {
+                    templateUrl: appPath + "Views/CreateMovie.html",
+                    controller: "CreateMovieCtrl as createCtrl"
+                })
                     .otherwise("/store");
             }
             RouteConfig.$inject = ["$routeProvider"];

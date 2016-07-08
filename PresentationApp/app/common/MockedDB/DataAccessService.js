@@ -6,10 +6,22 @@ var app;
         (function (MockedDB) {
             var DataAccessService = (function () {
                 function DataAccessService($resource) {
+                    var _this = this;
                     this.$resource = $resource;
+                    this.setMovieList = function (movieList) {
+                    };
+                    this.getMovieList = function () {
+                        return _this.movieList;
+                    };
+                    this.getProductResource().query(function (data) {
+                        if (_this.movieList === undefined) {
+                            _this.movieList = data;
+                            _this.setMovieList(_this.movieList);
+                        }
+                    });
                 }
                 DataAccessService.prototype.getProductResource = function () {
-                    return this.$resource("store/movieList");
+                    return this.$resource("store/movieList/:id");
                 };
                 DataAccessService.$inject = ["$resource"];
                 return DataAccessService;
