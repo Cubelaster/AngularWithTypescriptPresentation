@@ -1,4 +1,9 @@
 namespace app.MovieStore.Controllers {
+
+    export interface IControllerScope extends ng.IScope {
+        movieList: app.MovieStore.Contracts.ModelContracts.IMovieContract[];
+    }
+
     export class MovieListCtrl
         implements app.MovieStore.Contracts.ControllerContracts.IMovieListCtrlContract {
 

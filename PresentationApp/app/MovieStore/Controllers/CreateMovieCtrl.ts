@@ -14,11 +14,23 @@ namespace app.MovieStore.Controllers {
         createMovie = (movie: app.MovieStore.Contracts.ModelContracts.IMovieContract
             , MovieForm): void => {
             if (MovieForm.$valid) {
+
                 var id = this.dataAccessService.movieList.length + 1;
                 this.movie.id = id;
                 this.movie.voteCount = 0;
                 this.movie.lastRentalDate = undefined;
-                this.dataAccessService.movieList.push(this.movie);
+                var newMovie = new app.MovieStore.Models.Movie(
+                        this.movie.id,
+                        this.movie.productName,
+                        this.movie.productPrice,
+                        this.movie.productDescription,
+                        this.movie.movieRating,
+                        this.movie.maxRentalPeriod,
+                        this.movie.movieGenre,
+                        this.movie.lastRentalDate,
+                        this.movie.imageUrl
+                        ); 
+                this.dataAccessService.movieList.push(newMovie);
                 alert('Successfully created!');
             }
         }

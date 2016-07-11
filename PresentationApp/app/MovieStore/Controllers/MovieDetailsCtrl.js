@@ -35,6 +35,9 @@ var app;
                             alert('Form is invalid!');
                         }
                     };
+                    this.rentIt = function () {
+                        _this.movie.rentIt();
+                    };
                     var controller = this;
                     controller.title = 'Movie Details';
                     for (var i = 0; i < this.dataAccessService.movieList.length; i++) {

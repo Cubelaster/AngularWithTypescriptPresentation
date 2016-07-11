@@ -14,7 +14,8 @@ var app;
                             _this.movie.id = id;
                             _this.movie.voteCount = 0;
                             _this.movie.lastRentalDate = undefined;
-                            _this.dataAccessService.movieList.push(_this.movie);
+                            var newMovie = new app.MovieStore.Models.Movie(_this.movie.id, _this.movie.productName, _this.movie.productPrice, _this.movie.productDescription, _this.movie.movieRating, _this.movie.maxRentalPeriod, _this.movie.movieGenre, _this.movie.lastRentalDate, _this.movie.imageUrl);
+                            _this.dataAccessService.movieList.push(newMovie);
                             alert('Successfully created!');
                         }
                     };

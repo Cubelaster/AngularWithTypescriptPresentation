@@ -1,4 +1,5 @@
 namespace app.MovieStore.Models {
+
     export class Movie
         implements app.MovieStore.Contracts.ModelContracts.IMovieContract {
         _voteCount: number;
@@ -17,8 +18,14 @@ namespace app.MovieStore.Models {
             movie._voteCount = 0;
         }
 
-        getDueDate = () => {
-            return this.lastRentalDate;
+        getDueDate = (): any => {
+            var movie = this;
+            if (movie._lastRentalDate === undefined) {
+                return 'Movie is available';
+            } else {
+                var dueDate = movie._lastRentalDate.getDate() + movie.maxRentalPeriod ;
+                return ( dueDate + '.' +  (parseInt ( movie._lastRentalDate.getMonth().toFixed()) + 1) + '.' + movie._lastRentalDate.getFullYear());
+            }
         }
 
         getVoteCount = () => {
@@ -26,9 +33,10 @@ namespace app.MovieStore.Models {
         }
 
         rentIt = () => {
-            // this._lastRentalDate = new Date();
+            this.lastRentalDate = new Date();
+            alert('Rented');
         }
-        
+
         public get voteCount(): number {
             return this._voteCount;
         }
@@ -44,15 +52,7 @@ namespace app.MovieStore.Models {
 
         public get lastRentalDate(): any {
             var movie = this;
-            if (movie._lastRentalDate === undefined) {
-                return 'Movie is available';
-            } else {
-                var dueDate = new Date(movie._lastRentalDate
-                    .setTime(movie._lastRentalDate.getTime() +
-                    movie.maxRentalPeriod * 86400000)
-                );
-                return dueDate;
-            }
+            return movie._lastRentalDate;
         }
 
         public set lastRentalDate(dueDate: any) {

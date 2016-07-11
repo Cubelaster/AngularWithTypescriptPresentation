@@ -9,12 +9,13 @@ namespace app.MovieStore.Controllers {
 
         title: string;
         public movie: app.MovieStore.Models.Movie;
+        public movieList;
 
         static $inject = ["$routeParams", "dataAccessService"];
         constructor(
             private $routeParams: IMovieParams,
             private dataAccessService: app.common.MockedDB.DataAccessService
-        ) {
+            ) {
             let controller = this;
             controller.title = 'Movie Details';
 
@@ -57,6 +58,10 @@ namespace app.MovieStore.Controllers {
             } else {
                 alert('Form is invalid!');
             }
+        }
+
+        rentIt = () => {
+            this.movie.rentIt();
         }
     }
     angular.module('movieStore')

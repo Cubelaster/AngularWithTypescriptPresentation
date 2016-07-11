@@ -17,13 +17,21 @@ var app;
                     this._lastRentalDate = _lastRentalDate;
                     this.imageUrl = imageUrl;
                     this.getDueDate = function () {
-                        return _this.lastRentalDate;
+                        var movie = _this;
+                        if (movie._lastRentalDate === undefined) {
+                            return 'Movie is available';
+                        }
+                        else {
+                            var dueDate = movie._lastRentalDate.getDate() + movie.maxRentalPeriod;
+                            return (dueDate + '.' + (parseInt(movie._lastRentalDate.getMonth().toFixed()) + 1) + '.' + movie._lastRentalDate.getFullYear());
+                        }
                     };
                     this.getVoteCount = function () {
                         return _this.voteCount;
                     };
                     this.rentIt = function () {
-                        // this._lastRentalDate = new Date();
+                        _this.lastRentalDate = new Date();
+                        alert('Rented');
                     };
                     this.upVoteMovie = function () {
                         _this._voteCount++;
@@ -44,15 +52,7 @@ var app;
                 Object.defineProperty(Movie.prototype, "lastRentalDate", {
                     get: function () {
                         var movie = this;
-                        if (movie._lastRentalDate === undefined) {
-                            return 'Movie is available';
-                        }
-                        else {
-                            var dueDate = new Date(movie._lastRentalDate
-                                .setTime(movie._lastRentalDate.getTime() +
-                                movie.maxRentalPeriod * 86400000));
-                            return dueDate;
-                        }
+                        return movie._lastRentalDate;
                     },
                     set: function (dueDate) {
                         var movie = this;
