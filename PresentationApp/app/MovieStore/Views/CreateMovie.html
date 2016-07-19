@@ -17,7 +17,7 @@
                     <label for="movieRating">Movie rating:</label>
                     <input focus id="movieRating" type="text" required type="text" placeholder="Rating" ng-model="createCtrl.movie.movieRating" />
                     <label for="maxRentalPeriod">Maximum rental period:</label>
-                    <input id="maxRentalPeriod" type="text" required ng-pattern="/^[1-9]$/" placeholder="Days" ng-model="createCtrl.movie.maxRentalPeriod"
+                    <input id="maxRentalPeriod" type="number" min="1" max="5" required ng-pattern="/^[1-9]$/" placeholder="Days" ng-model="createCtrl.movie.maxRentalPeriod"
                     />
                     <label for="movieGenre">Movie genre:</label>
                     <input focus id="movieGenre" type="text" required type="text" placeholder="Genre" ng-model="createCtrl.movie.movieGenre" />

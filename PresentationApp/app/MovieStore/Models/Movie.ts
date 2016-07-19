@@ -23,7 +23,7 @@ namespace app.MovieStore.Models {
             if (movie._lastRentalDate === undefined) {
                 return 'Movie is available';
             } else {
-                var dueDate = movie._lastRentalDate.getDate() + movie.maxRentalPeriod ;
+                var dueDate = movie._lastRentalDate.getDate() + movie.maxRentalPeriod.valueOf() ;
                 return ( dueDate + '.' +  (parseInt ( movie._lastRentalDate.getMonth().toFixed()) + 1) + '.' + movie._lastRentalDate.getFullYear());
             }
         }
